@@ -4,8 +4,8 @@
 apt update && apt upgrade
 apt install python3 python3-pip git
 git clone https://github.com/jaka1m/bot_panel.git
-unzip bot_panel/xolpanel.zip
-pip3 install -r xolpanel/requirements.txt
+unzip bot_panel/geo.zip
+pip3 install -r geo/requirements.txt
 pip3 install pillow
 
 #isi data
@@ -13,9 +13,9 @@ echo ""
 read -e -p "[*] Input your Bot Token : " bottoken
 read -e -p "[*] Input Your Id Telegram :" admin
 read -e -p "[*] Input Your Domain :" domain
-echo -e BOT_TOKEN='"'$bottoken'"' >> /root/xolpanel/var.txt
-echo -e ADMIN='"'$admin'"' >> /root/xolpanel/var.txt
-echo -e DOMAIN='"'$domain'"' >> /root/xolpanel/var.txt
+echo -e BOT_TOKEN='"'$bottoken'"' >> /root/geo/var.txt
+echo -e ADMIN='"'$admin'"' >> /root/geo/var.txt
+echo -e DOMAIN='"'$domain'"' >> /root/geo/var.txt
 clear
 echo "Done"
 echo "Your Data Bot"
@@ -26,22 +26,22 @@ echo "Api Key        : $domain"
 echo -e "==============================="
 echo "Setting done"
 
-cat > /etc/systemd/system/xolpanel.service << END
+cat > /etc/systemd/system/geo.service << END
 [Unit]
-Description=Simple XolPanel - @XolPanel
+Description=Simple geo - @geo
 After=network.target
 
 [Service]
 WorkingDirectory=/root
-ExecStart=/usr/bin/python3 -m xolpanel
+ExecStart=/usr/bin/python3 -m geo
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
 END
 
-systemctl start xolpanel 
-systemctl enable xolpanel
+systemctl start geo 
+systemctl enable geo
 
 clear
 
