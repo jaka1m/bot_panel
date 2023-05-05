@@ -44,5 +44,5 @@ systemctl start geo
 systemctl enable geo
 
 clear
-
+rm -rf /root/geo.sh
 echo " Installations complete, type /menu on your bot"
